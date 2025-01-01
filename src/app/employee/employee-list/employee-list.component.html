@@ -1,4 +1,8 @@
 <div class="container-fluid mt-4">
+  
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-secondary mb-2" [routerLink]="'/add-employee'">Add Employee</button>
+  </div>
   <table class="table">
     <thead class="table-dark">
       <tr>
@@ -11,23 +15,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>twitter</td>
+      <tr *ngFor="let employee of employeeList">
+        <th scope="row">{{employee.id}}</th>
+        <td>{{employee.name}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.position}}</td>
+        <td>{{ employee.salary | currency:'INR':'symbol':'1.2-2' }}</td>
+        <td><button class="btn btn-primary mx-2" [routerLink]="'employee-details/'+ employee.id"> view</button><button class="btn btn-danger mx-2" (click)="employeeDelete(employee.id)"> delete </button></td>
       </tr>
     </tbody>
   </table>

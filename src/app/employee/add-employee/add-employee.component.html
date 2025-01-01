@@ -1,1 +1,84 @@
-<p>add-employee works!</p>
+<div class="container mt-4">
+    <h3>Add New Employee</h3>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <!-- Employee Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="name"
+        />
+        <div *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched" class="text-danger">
+          Name is required.
+        </div>
+      </div>
+  
+      <!-- Employee Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+        />
+        <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched" class="text-danger">
+          Valid email is required.
+        </div>
+      </div>
+  
+      <!-- Employee Position -->
+      <div class="mb-3">
+        <label for="position" class="form-label">Position</label>
+        <input
+          type="text"
+          class="form-control"
+          id="position"
+          formControlName="position"
+        />
+        <div *ngIf="employeeForm.get('position')?.invalid && employeeForm.get('position')?.touched" class="text-danger">
+          Position is required.
+        </div>
+      </div>
+  
+      <!-- Employee Salary -->
+      <div class="mb-3">
+        <label for="salary" class="form-label">Salary</label>
+        <input
+          type="number"
+          class="form-control"
+          id="salary"
+          formControlName="salary"
+        />
+        <div *ngIf="employeeForm.get('salary')?.invalid && employeeForm.get('salary')?.touched" class="text-danger">
+          Salary must be greater than 0.
+        </div>
+      </div>
+  
+      <!-- Departments -->
+      <div class="mb-3">
+        <label class="form-label">Departments</label>
+        <div formArrayName="departments" *ngFor="let department of departments; let i = index">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [formControlName]="i"
+              [id]="'dept-' + department.id"
+            />
+            <label class="form-check-label" [for]="'dept-' + department.id">
+              {{ department.name }}
+            </label>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">
+        Submit
+      </button>
+    </form>
+  </div>
+  

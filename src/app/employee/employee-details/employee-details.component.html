@@ -1,1 +1,24 @@
-<p>employee-details works!</p>
+<div class="employee-card" [ngClass]="{'full-screen': isFullScreen}">
+    <div class="employee-card-header">
+      <h2>Employee Details</h2>
+    </div>
+    <div class="employee-card-body" *ngIf="employee">
+      <div class="detail">
+        <label>Name:</label>
+        <span>{{ employee.name }}</span>
+      </div>
+      <div class="detail">
+        <label>Email:</label>
+        <span>{{ employee.email }}</span>
+      </div>
+      <div class="detail">
+        <label>Position:</label>
+        <span>{{ employee.position }}</span>
+      </div>
+      <div class="detail">
+        <label>Salary:</label>
+        <span>{{ employee.salary | currency }}</span>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,25 @@
+<div class="container-fluid mt-4">
+  
+    <!-- <div class="d-flex justify-content-end">
+      <button class="btn btn-secondary mb-2" [routerLink]="'/add-employee'">Add Employee</button>
+    </div> -->
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Location</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let department of departments">
+          <th scope="row">{{department.id}}</th>
+          <td>{{department.name}}</td>
+          <td>{{department.location}}</td>
+          <td><button class="btn btn-primary mx-2" (click)="downloadReport(department.id)"> Download Report</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
